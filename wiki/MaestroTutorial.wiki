@@ -1,11 +1,11 @@
 = Introduction =
 
-Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an !OpenFlow controller. Because it is an !OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFLowTutorial]. Please first be familiar with it to know how to setup a virtual machine and the emulated network topology, to be able to run Maestro to control the switches inside it. Of course you already are running your own !OpenFlow network, you can skip this OpenFLowTutorial and go directly with Maestro.
+Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an !OpenFlow controller. Because it is an !OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFlowTutorial]. Please first be familiar with it to know how to setup a virtual machine and the emulated network topology, to be able to run Maestro to control the switches inside it. Of course you already are running your own !OpenFlow network, you can skip this OpenFLowTutorial and go directly with Maestro.
 
 
-= The OpenFLowTutorial =
+= The !OpenFlowTutorial =
 
-As a quick summary of the OpenFLowTutorial, you basically need to do these following things to setup an emulated !OpenFlow network:
+As a quick summary of the !OpenFlowTutorial, you basically need to do these following things to setup an emulated !OpenFlow network:
 
   * Download the VM image file from [http://openflowswitch.org/downloads/OpenFlowTutorial-081910.vmware.zip here]
   * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer] if you are using Linux
@@ -29,4 +29,4 @@ To run Maestro, you need to provide two configuration files. First one is a conf
 
 For example, if you want to run the learning-switch functionality, you just type "$JAVA_HOME/bin/java -cp build/ sys.Main conf/openflow.conf conf/learningswitch.dag" to start the system. Or you can just run the "start.sh" script so that you don't have to type such a long command. Then you will see the Maestro command console, which at this point has very limited functionalities. For example, in the console, you can type "print switches" to print out information about all connected !OpenFlow switches in the network.
 
-After starting Maestro, you will see the two switches get connected to the controller, and then you can let one end host to ping the other one to verify that it works. Then you probably also want to try the routing version of Maestro. You can use all utilities provided by the OpenFlowTutorial to trace all the !OpenFlow protocol messages exchanged between the controller and the switches, and use tcpdump to trace data plane packets within the network.
+After starting Maestro, you will see the two switches get connected to the controller, and then you can let one end host to ping the other one to verify that it works. Then you probably also want to try the routing version of Maestro. You can use all utilities provided by the !OpenFlowTutorial to trace all the !OpenFlow protocol messages exchanged between the controller and the switches, and use tcpdump to trace data plane packets within the network.
