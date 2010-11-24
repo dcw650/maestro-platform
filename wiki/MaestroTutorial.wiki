@@ -10,7 +10,7 @@ As a quick summary of the !OpenFlowTutorial, you basically need to do these foll
   * Download the VM image file from [http://openflowswitch.org/downloads/OpenFlowTutorial-081910.vmware.zip here]
   * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer] if you are using Linux
   * Start the virtual machine by running "vmplayer OpenFlowVM.vmx".
-  * Inside a terminal connected to the virtual machine, start a network topology using mininet. Run "sudo mn --topo linear --switch ovsk --controller remote" for example, to create a network with two switches and two hosts.
+  * Inside a terminal connected to the virtual machine, start a network topology using mininet. Run {{{sudo mn --topo linear --switch ovsk --controller remote}}} for example, to create a network with two switches and two hosts.
 
 If you have not done any of these before, you should first go through the OpenFLowTutorial and run the default controller & NOX, to get familiar with how it really works. Then we will use this virtual !OpenFlow network to try Maestro instead. Let's go~
 
@@ -19,14 +19,30 @@ If you have not done any of these before, you should first go through the OpenFL
 
 What we are going to do is to replace all the default controller and NOX part in the OpenFLowTutorial with Maestro. 
 
-Maestro is based on Java, so to be able to run Maestro you first need to have a Java environment. What we suggest to do is download the latest JDK from [http://www.oracle.com/technetwork/java/javase/downloads/index.html here]. Choose the right binary according to what operating system you have. After expanding and installing the JDK binary, you should also set the $JAVA_HOME environment variable. For bash users, you can add "export JAVA_HOME=/the/path/to/where/you/install/your/JDK" in your ~/.bashrc file.
+Maestro is based on Java, so to be able to run Maestro you first need to have a Java environment. What we suggest to do is download the latest JDK from [http://www.oracle.com/technetwork/java/javase/downloads/index.html here]. Choose the right binary according to what operating system you have. After expanding and installing the JDK binary, you should also set the $JAVA_HOME environment variable. For bash users, you can add
 
-Next, because Maestro relies on Apache Ant to manage compilation of the code, you need to install it before running Maestro. For Debian OSes, you can just run "sudo apt-get install ant". For RPM-compatible OSes, you can run "sudo yum install ant". For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
+{{{export JAVA_HOME=/the/path/to/where/you/install/your/JDK}}} 
 
-Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here. After done this, unzip it so you get the Maestro-0.1.0 directory. This will be the main Maestro working directory. To build the entire project, just run "ant". It will compile all the .java files and generate corresponding .class files in the build/ directory. You can also build the javadoc webpage files by running "ant javadoc". These webpage files will be in the javadoc/ directory, which you can open with a web browser to see all the documentations of the code. To clean up the build, just run "ant clean".
+into your ~/.bashrc file.
+
+Next, because Maestro relies on Apache Ant to manage compilation of the code, you need to install it before running Maestro. For Debian OSes, you can just run
+
+{{{sudo apt-get install ant}}} 
+
+For RPM-compatible OSes, you can run
+
+{{{sudo yum install ant}}} 
+
+For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
+
+Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here. After done this, unzip it so you get the Maestro-0.1.0 directory. This will be the main Maestro working directory. To build the entire project, just run {{{ant}}}. It will compile all the .java files and generate corresponding .class files in the build/ directory. You can also build the javadoc webpage files by running {{{ant javadoc}}}. These webpage files will be in the javadoc/ directory, which you can open with a web browser to see all the documentations of the code. To clean up the build, just run {{{ant clean}}}.
 
 To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See [ExplanationOfParameter explanation of parameter configuration] for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can be found in the design document of Maestro.
 
-For example, if you want to run the learning-switch functionality, you just type "$JAVA_HOME/bin/java -cp build/ sys.Main conf/openflow.conf conf/learningswitch.dag" to start the system. Or you can just run the "start.sh" script so that you don't have to type such a long command. Then you will see the Maestro command console, which at this point has very limited functionalities. For example, in the console, you can type "print switches" to print out information about all connected !OpenFlow switches in the network.
+For example, if you want to run the learning-switch functionality, you just type
+
+{{{$JAVA_HOME/bin/java -cp build/ sys.Main conf/openflow.conf conf/learningswitch.dag}}}
+
+to start the system. Or you can just run the {{{./start.sh}}} script so that you don't have to type such a long command. Then you will see the Maestro command console, which at this point has very limited functionalities. For example, in the console, you can type {{{print switches}}} to print out information about all connected !OpenFlow switches in the network.
 
 After starting Maestro, you will see the two switches get connected to the controller, and then you can let one end host to ping the other one to verify that it works. Then you probably also want to try the routing version of Maestro. You can use all utilities provided by the !OpenFlowTutorial to trace all the !OpenFlow protocol messages exchanged between the controller and the switches, and use tcpdump to trace data plane packets within the network.
