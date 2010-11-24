@@ -1,11 +1,26 @@
 = Introduction =
 
-Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an OpenFlow controller. Because it is an OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFLowTutorial]. Please first be familiar with it to know that how to setup a virtual machine and the network topology inside, to be able to run Maestro to control the switches inside it.
+Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an OpenFlow controller. Because it is an OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFLowTutorial]. Please first be familiar with it to know how to setup a virtual machine and the emulated network topology, to be able to run Maestro to control the switches inside it. Of course you already are running your own OpenFlow network, you can skip this OpenFLowTutorial and go directly with Maestro.
 
 
-= Details =
+= The OpenFLowTutorial =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+As a quick summary of the OpenFLowTutorial, you basically need to do these following things to setup an emulated OpenFlow network:
+
+  * Download the VM image file from [http://openflowswitch.org/downloads/OpenFlowTutorial-081910.vmware.zip here]
+  * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer] if you are using Linux
+  * Start the virtual machine by running "vmplayer OpenFlowVM.vmx".
+  * Inside a terminal connected to the virtual machine, start a network topology using mininet. Run "sudo mn --topo linear --switch ovsk --controller remote" for example, to create a network with two switches and two hosts.
+
+If you have not done any of these before, you should first go through the OpenFLowTutorial and run the default controller & NOX, to get familiar with how it really works. Then we will use this virtual OpenFlow network to try Maestro instead. Let's go~
+
+
+= Run Maestro =
+
+What we are going to do is to replace all the default controller and NOX part in the OpenFLowTutorial with Maestro. 
+
+Maestro is based on Java, so to be able to run Maestro you first need to have a Java environment. What we suggest to do is download the latest JDK from [http://www.oracle.com/technetwork/java/javase/downloads/index.html here]. Choose the right binary according to what operating system you have. After expanding and installing the JDK binary, you should also set the $JAVA_HOME environment variable. For bash users, you can add "export JAVA_HOME=/the/path/to/where/you/install/your/JDK" in your ~/.bashrc file.
+
+Next, because Maestro relies on Apache Ant to manage compilation of the code, you need to install it before running Maestro. For Debian OSes, you can just run "sudo apt-get install ant". For RPM-compatible OSes, you can run "sudo yum install ant". For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
+
+Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here. After done this, unzip it so you get the Maestro-0.1.0 directory. This will be the main Maestro working directory. To build the entire project, just run "ant". It will compile all the .java files and generate corresponding .class files in the build/ directory. You can also build the javadoc webpage files by running "ant javadoc". These webpage files will be in the javadoc/ directory, which you can open with a web browser to see all the documentations of the code.
