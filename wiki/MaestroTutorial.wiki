@@ -1,18 +1,71 @@
 = Introduction =
 
-Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an !OpenFlow controller. Because it is an !OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFlowTutorial]. Please first be familiar with it to know how to setup a virtual machine and the emulated network topology, to be able to run Maestro to control the switches inside it. Of course you already are running your own !OpenFlow network, you can skip this OpenFLowTutorial and go directly with Maestro.
+Thanks for trying Maestro! This short tutorial prepares you with the basic knowledge about how to use Maestro as an !OpenFlow controller. Because it is an !OpenFlow controller, this tutorial heavily relies on the latest [http://www.openflowswitch.org/wk/index.php/HOTITutorial2010 OpenFlowTutorial]. In this tutorial we are only going to shown you the most straight-forward way of setting up one such virtual environment using Ubuntu Linux 32bit, to be able to run Maestro to control the switches inside it. For a complete explanation about setting setup a virtual machine and the emulated network topology, and for all other kinds of operating systems you are using, please check the !OpenFlowTutorial to know more details. Of course if you are already very familiar with OpenFlow or you are already running your own !OpenFlow network, you can skip this OpenFlowTutorial section and go directly with Maestro.
 
 
-= The !OpenFlowTutorial =
+= The !OpenFlowTutorial - Setup the Virtual !OpenFlow Environment =
 
-As a quick summary of the !OpenFlowTutorial, you basically need to do these following things to setup an emulated !OpenFlow network:
+As a quick summary of the !OpenFlowTutorial, you basically need to follow these steps below to setup an emulated virtual !OpenFlow network environment:
 
-  * Download the VM image file from [http://openflowswitch.org/downloads/OpenFlowTutorial-081910.vmware.zip here]
-  * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer] if you are using Linux
-  * Start the virtual machine by running "vmplayer OpenFlowVM.vmx".
-  * Inside a terminal connected to the virtual machine, start a network topology using mininet. Run {{{sudo mn --topo linear --switch ovsk --controller remote}}} for example, to create a network with two switches and two hosts.
+  * Download the VM image file from [http://openflowswitch.org/downloads/OpenFlowTutorial-081910.vmware.zip here]. Then in your host machine, run:
 
-If you have not done any of these before, you should first go through the OpenFLowTutorial and run the default controller & NOX, to get familiar with how it really works. Then we will use this virtual !OpenFlow network to try Maestro instead. Let's go~
+  {{{
+  [host-machine]$ unzip OpenFlowTutorial-081910.vmware.zip
+  }}}
+
+  and you will get a directory named "OpenFlowVM.vmwarevm", which we call the image directory from now on.
+
+  * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer]. You need to register for an evaluation. For example, for the Ubuntu 32bit version, you will download the file named "VMware-Player-3.1.3-324285.i386.bundle". Then add execute permission to this file by:
+
+  {{{
+  [host-machine]$ chmod +x VMware-Player-3.1.3-324285.i386.bundle
+  }}}
+
+  Then, execute this file by:
+
+  {{{
+  [host-machine]$ sudo ./VMware-Player-3.1.3-324285.i386.bundle
+  }}}
+
+  It will pop up the dialog to finish the installation. Just default settings will work.
+
+  * Change directory to the image directory and start the virtual machine by:
+
+  {{{
+  [host-machine]$ cd OpenFlowVM.vmwarevm
+
+  [host-machine]$ vmplayer OpenFlowVM.vmx
+  }}}
+
+  Both the username and the password are "openflow". After the virtual machine boots, you will get a window for the virtual machine with a shell running. Run:
+
+  {{{
+  [virtual-machine]$ ifconfig eth0
+  }}}
+
+  to get the virtual machine's IP address. For example, you will get something like "192.168.212.128". This will be the IP address that you use SSH to connect to this virtual machine from the local host machine, by:
+
+  {{{
+  [host-machine]$ ssh openflow@192.168.212.128
+  }}}
+
+  * Inside such a SSH terminal connected to the virtual machine, start a network topology using mininet by:
+
+  {{{
+  sudo mn --topo single,3 --mac --switch ovsk --controller remote
+  }}}
+
+  This creates a network with one !OpenFlow switch and three hosts described in the "Start Network" section in the !OpenFlowTutorial. For more explanations, please refer to the !OpenFlowTutorial.
+
+  * In the mininet console, you can try to let host h2 ping h3 to see whether they can talk to each other by:
+
+  {{{
+  mininet> h2 ping -c3 h3
+  }}}
+
+  Of course, because now we don't have a working controller, the switch is not functioning, thus the ping will fail.
+
+After done all of these previous steps, you have already successfully created a virtual !OpenFlow network environment! Now we are right at before the "Start Controller and view Startup messages in Wireshark" section in the !OpenFlowTutorial. You can definitely continue follow that tutorial and try their basic controller and NOX. But since this tutorial is about Maestro, we will use this virtual !OpenFlow network environment to try Maestro instead. Let's go~
 
 
 = Run Maestro =
