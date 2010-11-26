@@ -71,10 +71,10 @@ After done all of these previous steps, you have already successfully created a 
 
 What we are going to do is to replace all the default controller and NOX part in the OpenFLowTutorial with Maestro. 
 
-Maestro is based on Java, so to be able to run Maestro you first need to have a Java environment. What we suggest to do is download the latest JDK from [http://www.oracle.com/technetwork/java/javase/downloads/index.html here] to the virtual machine. Choose the right binary according to what operating system you have. For the Ubuntu 32bit, you can do:
+Maestro is based on Java, so to be able to run Maestro you first need to have a Java environment. What we suggest to do is download the latest JDK from [http://www.oracle.com/technetwork/java/javase/downloads/index.html here] to the virtual machine. Choose the right binary according to what operating system you have. For the Ubuntu 32bit, you can first copy the url to the installation file "jdk-6u22-linux-i586.bin", and then do:
 
 {{{
-[virtual-machine]$ wget http://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/VerifyItem-Start/jdk-6u22-linux-i586.bin?BundledLineItemUUID=5TqJ_hCyxMIAAAEsPZBKPop2&OrderID=DYWJ_hCyImAAAAEsJZBKPop2&ProductID=XUuJ_hCwWmcAAAErMVJuIQy3&FileName=/jdk-6u22-linux-i586.bin
+[virtual-machine]$ wget THE_COPIED_URL
 [virtual-machine]$ chmod +x jdk-6u22-linux-i586.bin
 [virtual-machine]$ ./jdk-6u22-linux-i586.bin
 }}}
@@ -103,7 +103,7 @@ For RPM-compatible OSes, you can run
 
 For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
 
-Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here [*XXX - FIX LINK HERE]. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
+Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here *XXX - FIX LINK HERE*. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
 
 {{{
 [virtual-machine]$ cd Maestro-0.1.0
@@ -122,7 +122,7 @@ These webpage files will be in the "javadoc/" directory, which you can open with
 [virtual-machine]$ ant clean
 }}}
 
-To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See [ExplanationOfParameter explanation of parameter configuration] for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can be found in the design document of Maestro.[*XXX - FIX LINK HERE]
+To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See [ExplanationOfParameter explanation of parameter configuration] for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can be found in the design document of Maestro. *XXX - FIX LINK HERE*
 
 For example, if you want to run the learning-switch functionality, in the Maestro working directory, you just type
 
