@@ -15,7 +15,7 @@ As a quick summary of the !OpenFlowTutorial, you basically need to follow these 
 
   and you will get a directory named "OpenFlowVM.vmwarevm", which we call the image directory from now on.
 
-  * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer]. You need to register for an evaluation. For example, for the Ubuntu 32bit version, you will download the file named "VMware-Player-3.1.3-324285.i386.bundle". Then add execute permission to this file by:
+  * Install [https://www.vmware.com/tryvmware/?p=player&lp=default VMPlayer]. You need to register for an evaluation version. For example, for the Ubuntu 32bit version, you will download the file named "VMware-Player-3.1.3-324285.i386.bundle". Then add execute permission to this file by:
 
   {{{
   [host-machine]$ chmod +x VMware-Player-3.1.3-324285.i386.bundle
@@ -64,7 +64,7 @@ As a quick summary of the !OpenFlowTutorial, you basically need to follow these 
 
   Of course, because now we don't have a working controller, the switch is not functioning, thus the ping will fail.
 
-After done all of these previous steps, you have already successfully created a virtual !OpenFlow network environment! Now we are right at before the "Start Controller and view Startup messages in Wireshark" section in the !OpenFlowTutorial. You can definitely continue follow that tutorial and try their basic controller and NOX. But since this tutorial is about Maestro, we will use this virtual !OpenFlow network environment to try Maestro instead. Let's go~
+After done all of these previous steps, you have already successfully created a virtual !OpenFlow network environment! Now we are right at before the "Start Controller and view Startup messages in Wireshark" section in the !OpenFlowTutorial. You can definitely continue following that tutorial and try their basic controller and NOX. But since this tutorial is about Maestro, we will use this virtual !OpenFlow network environment to try Maestro instead. Let's go~
 
 
 = Run Maestro =
@@ -103,7 +103,7 @@ For RPM-compatible OSes, you can run
 
 For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
 
-Yes, that will be all the dependencies! We just tried to make Maestro migrate as easily as possible. The Next step is downloading the Maestro code here *XXX - FIX LINK HERE*. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
+Yes, that will be all the dependencies! The next step is downloading the Maestro code here *XXX - FIX LINK HERE*. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
 
 {{{
 [virtual-machine]$ cd Maestro-0.1.0
@@ -141,3 +141,5 @@ to start the system. Then you will see the Maestro command console, which at thi
 to print out information about all connected !OpenFlow switches in the network.
 
 After starting Maestro, you will see the two switches get connected to the controller, and then you can let one end host to ping the other one to verify that it works. Then you probably also want to try the routing version of Maestro. You can use all utilities provided by the !OpenFlowTutorial to trace all the !OpenFlow protocol messages exchanged between the controller and the switches, and use tcpdump to trace data plane packets within the network.
+
+And that will be all of the tutorial~ Hope you enjoy it. For more detailed information about Maestro, please check out the design document, and all other papers. Please feel free to send us emails about any problems you may encounter. Thanks again for choosing Maestro :)
