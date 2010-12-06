@@ -87,6 +87,20 @@ export JAVA_HOME=/the/path/to/where/you/installed/your/JDK
 
 into your ~/.bashrc file.
 
+If you do not want to manually install JDK, you can also just run (for Debian OSes)
+
+{{{
+[virtual-machine]$ sudo apt-get update
+[virtual-machine]$ sudo apt-get install openjdk-6-jdk
+}}}
+
+or for RPM-compatible OSes, you can run
+
+{{{
+[virtual-machine]$ sudo yum update
+[virtual-machine]$ sudo yum install java-1.6.0-openjdk
+}}} 
+
 Next, because Maestro relies on Apache Ant to manage compilation of the code, you need to install it before running Maestro. For Debian OSes, you can just run
 
 {{{
@@ -122,15 +136,15 @@ These webpage files will be in the "javadoc/" directory, which you can open with
 [virtual-machine]$ ant clean
 }}}
 
-To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See [ExplanationOfParameter explanation of parameter configuration] for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can be found in the design document of Maestro. *XXX - FIX LINK HERE*
+To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See *XXX - FIX LINK HERE* for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can also be found in the design document of Maestro. *XXX - FIX LINK HERE*
 
 For example, if you want to run the learning-switch functionality, in the Maestro working directory, you just type
 
 {{{
-[virtual-machine]$ $JAVA_HOME/bin/java -cp build/ sys.Main conf/openflow.conf conf/learningswitch.dag
+[virtual-machine]$ $JAVA_HOME/bin/java -cp build/ sys.Main conf/openflow.conf conf/learningswitch.dag 1
 }}}
 
-to start the system. Then you will see the Maestro command console, which at this point has very limited functionalities. For example, in the console, you can type 
+to start the system. The last argument, "1" means that we want to run Maestro in interactive mode. Then you will see the Maestro command console, which at this point has very limited functionalities. (If the last argument is 0, then the command console will not be started.) For example, in the console, you can type 
 
 {{{
 [virtual-machine]Maestro> print
