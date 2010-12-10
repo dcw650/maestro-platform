@@ -136,7 +136,7 @@ These webpage files will be in the "javadoc/" directory, which you can open with
 [virtual-machine]$ ant clean
 }}}
 
-To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See *XXX - FIX LINK HERE* for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can also be found in the design document of Maestro. *XXX - FIX LINK HERE*
+To run Maestro, you need to provide two configuration files. First one is a configuration file which contains a bunch of parameter numbers. There is one example file which can also be used as default parameter settings, the "conf/openflow.conf" file. See [http://maestro-platform.googlecode.com/files/programming.pdf Using and Programming in Maestro] for detailed discussion. The second file is the DAG configuration file. Two examples are provided: "learningswitch.dag" and "routing.dag". As indicated by their names, in them applications related to build a learning-switch like network, and a routing network are composed to fulfill the correct functionality. More details about this can also be found in the design document of Maestro: [http://maestro-platform.googlecode.com/files/programming.pdf Using and Programming in Maestro]
 
 For example, if you want to run the learning-switch functionality, in the Maestro working directory, you just type
 
