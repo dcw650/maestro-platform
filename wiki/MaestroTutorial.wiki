@@ -117,7 +117,7 @@ For RPM-compatible OSes, you can run
 
 For Windows users or you can choose to download and install it manually from [http://ant.apache.org/bindownload.cgi here].
 
-Yes, that will be all the dependencies! The next step is downloading the Maestro code  *{http://maestro-platform.googlecode.com/files/Maestro-0.1.0.zip here]. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
+Yes, that will be all the dependencies! The next step is downloading the Maestro code  [http://maestro-platform.googlecode.com/files/Maestro-0.1.0.zip here]. After done this, unzip it so you get the "Maestro-0.1.0" directory. This will be the Maestro working directory. To build the entire project, just run:
 
 {{{
 [virtual-machine]$ cd Maestro-0.1.0
